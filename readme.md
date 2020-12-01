@@ -1,6 +1,8 @@
 # Video Plugin
 
-A plugin for [Kirby 3 CMS](http://getkirby.com) to embed content from YouTube without compromising privacy.
+A plugin for [Kirby 3 CMS](http://getkirby.com) to embed content from Vimeo without compromising privacy.
+
+Forked from [schnti](https://github.com/schnti/kirby3-video).
 
 ## Commercial Usage
 
@@ -41,25 +43,25 @@ Run these commands to update the plugin:
 ## CSS (SCSS)
 
 ```HTML
-<link rel="stylesheet" href="plugins/video/src/youtube.js">
+<link rel="stylesheet" href="plugins/video/src/vimeo.js">
 ```
 
 or
 
 ```SCSS
-@import "site/plugins/video/src/youtube";
+@import "site/plugins/video/src/vimeo";
 ```
 
 ## JS
 
 ```HTML
-<script src="site/plugins/video/src/youtube.js"></script>
+<script src="site/plugins/video/src/vimeo.js"></script>
 ```
 
 or
 
 ```JS
-require('site/plugins/video/src/youtube');
+require('site/plugins/video/src/vimeo');
 ```
 
 ## How to use it
@@ -67,5 +69,5 @@ require('site/plugins/video/src/youtube');
 Use this kirbytag
 
 ```
-(youtube: g5BEXgNHZJU)
+(vimeo: g5BEXgNHZJU)
 ```
