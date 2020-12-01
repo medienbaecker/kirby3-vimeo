@@ -1,4 +1,4 @@
-.youtube-container {
+.vimeo-container {
   position: relative;
   display: flex;
   justify-content: center;
@@ -32,11 +32,11 @@
     opacity: 0.7;
   }
 
-  .youtube-hint {
+  .vimeo-hint {
     display: none;
   }
 
-  &.disabled .youtube-hint {
+  &.disabled .vimeo-hint {
     display: inline-block;
     position: absolute;
     max-width: 400px;
@@ -49,7 +49,7 @@
       max-width: 100%;
     }
 
-    .youtube-hint-text {
+    .vimeo-hint-text {
       background: #ffffff;
       padding: 20px;
 
@@ -58,11 +58,11 @@
       }
     }
 
-    .youtube-hint-link-container {
+    .vimeo-hint-link-container {
       margin: 5px 0;
     }
 
-    .youtube-id {
+    .vimeo-id {
       font-size: 0.75rem;
       text-align: right;
       margin-top: 5px;

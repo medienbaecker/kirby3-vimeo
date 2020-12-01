@@ -4,45 +4,39 @@ use Kirby\Cms\File;
 use Kirby\Toolkit\F;
 use Kirby\Toolkit\Tpl;
 
-Kirby::plugin('schnti/video', [
+Kirby::plugin('medienbaecker/vimeo', [
 	'translations' => [
 		'de' => [
-			'schnti.video.headline'   => 'Wir respektieren deinen Datenschutz!',
-			'schnti.video.text'       => 'Klicke zum Aktivieren des Videos auf den Link. Wir möchten darauf hinweisen, dass nach der Aktivierung deine Daten an YouTube übermittelt werden',
-			'schnti.video.buttonText' => 'Video aktivieren',
-			'schnti.video.linkText'   => 'oder auf YouTube anschauen',
-			'schnti.video.id'         => 'YouTube ID:',
+			'medienbaecker.vimeo.headline'   => 'Wir respektieren deinen Datenschutz!',
+			'medienbaecker.vimeo.text'       => 'Klicke zum Aktivieren des Videos auf den Link. Wir möchten darauf hinweisen, dass nach der Aktivierung deine Daten an Vimeo übermittelt werden',
+			'medienbaecker.vimeo.buttonText' => 'Video aktivieren',
+			'medienbaecker.vimeo.linkText'   => 'oder auf Vimeo anschauen',
+			'medienbaecker.vimeo.id'         => 'Vimeo ID:',
 		],
 		'en' => [
-			'schnti.video.headline'   => 'We respect your privacy!',
-			'schnti.video.text'       => 'Click the button to activate the video. Then a connection to YouTube is established.',
-			'schnti.video.buttonText' => 'Activate video',
-			'schnti.video.linkText'   => 'or watch on youtube',
-			'schnti.video.id'         => 'YouTube ID:',
+			'medienbaecker.vimeo.headline'   => 'We respect your privacy!',
+			'medienbaecker.vimeo.text'       => 'Click the button to activate the video. Then a connection to Vimeo is established.',
+			'medienbaecker.vimeo.buttonText' => 'Activate video',
+			'medienbaecker.vimeo.linkText'   => 'or watch on Vimeo',
+			'medienbaecker.vimeo.id'         => 'Vimeo ID:',
 		]
 	],
 	'tags'         => [
-		'youtube' => [
+		'vimeo' => [
 			'attr' => array(
 				'class',
 				'width',
 			),
 			'html' => function ($tag) {
 
-				preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $tag->value, $match);
-
-				if (isset($match[1])) {
-					$id = $match[1];
-				} else {
-					$id = $tag->value;
-				}
+				$id = substr(parse_url($tag->value, PHP_URL_PATH), 1);
 
 				$class = $tag->class;
 				$width = ($tag->width) ? $tag->width : 1000;
 
-				$imageUrl = 'https://i.ytimg.com/vi/' . $id . '/maxresdefault.jpg';
+				$imageUrl = 'https://i.vimeocdn.com/video/' . $id . '_640.png';
 
-				$filename = F::safeName('youtube_' . $id . '.jpg');
+				$filename = F::safeName('vimeo_' . $id . '.png');
 				$path = $tag->parent()->root() . DS . $filename;
 
 				if (!file_exists($path)) {
@@ -59,7 +53,7 @@ Kirby::plugin('schnti/video', [
 
 					$image->resize($width);
 
-					return Tpl::load(__DIR__ . DS . 'snippets' . DS . 'youtube.php', [
+					return Tpl::load(__DIR__ . DS . 'snippets' . DS . 'vimeo.php', [
 						'class' => $class,
 						'id'    => $id,
 						'image' => $image,
@@ -67,7 +61,7 @@ Kirby::plugin('schnti/video', [
 					]);
 				}
 
-				return 'YouTube Video not found';
+				return 'Vimeo Video not found';
 			}
 		]
 	]
