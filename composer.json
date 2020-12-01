@@ -1,11 +1,16 @@
 {
-  "name": "schnti/video",
+  "name": "medienbaecker/vimeo",
   "description": "kirby privacy video tag",
   "authors": [
     {
       "name": "Timo Schneider",
       "email": "info@kleiner-als.de",
       "homepage": "https://kleiner-als.de"
+    },
+    {
+      "name": "Thomas Günther",
+      "email": "mail@medienbaecker.com",
+      "homepage": "https://medienbaecker.com"
     }
   ],
   "license": "MIT",
@@ -19,6 +24,6 @@
     "getkirby/composer-installer": "^1.1"
   },
   "extra": {
-    "installer-name": "video"
+    "installer-name": "vimeo"
   }
 }
